@@ -96,7 +96,7 @@ survives brand overrides untouched, since it tests the role rather than the hex.
 
 ## 002 — Empty states have no stated shape
 
-**Status:** open
+**Status:** resolved → [`empty-states.md`](empty-states.md) (19 Aug 2026)
 **Found:** 19 Aug 2026, building the install page changelog (P0.4)
 **Kind:** component contract — three of them — plus a selection rule
 **Blocks:** atlas group F (Surfaces and feedback, 56–66). Settle before that build.
@@ -151,7 +151,30 @@ A shared skeleton, then per-variant divergence:
   empty states — but plausibly only for first-run, not for a failed load. Needs
   saying, or it leaks.
 
-### Proposed self-check (draft, not ready)
+### Resolution
+
+Landed as three separate component contracts in
+[`empty-states.md`](empty-states.md), with a strict selection order
+(66 → 65 → 64), eight self-checks, and per-component prohibitions.
+
+Answers to the open questions above, as settled:
+
+- **Action count** — exactly one button, all three. No secondary, ever. The two
+  reference samples turned out to be right; the rule is enforced as a refusal
+  rather than a preference.
+- **66 vs 64/65 distinctness without `danger`** — carried by *structure*:
+  66 renders in a bordered container, 64 and 65 never do. Binary, and it avoids
+  making a network blip look like data loss.
+- **Colour permission leakage** — scoped permission applies to **64 only**.
+  Explicitly withdrawn for 65 (noise inside working chrome) and 66 (and
+  `danger` is banned there outright).
+- **Density** — all three appear in both modes. The only per-mode divergence is
+  the illustration, permitted in 64 low-density and nowhere else.
+- **Slots** — one shared skeleton, permitted slots declared per component.
+- **Copy ceilings** — 6 words / 120 chars for 64; 5 words / 90 chars for 65
+  and 66, with 65 required to name the active filter.
+
+### Original proposed self-check (superseded)
 
 ```
 If a surface can render with zero rows, it declares which of 64 / 65 / 66

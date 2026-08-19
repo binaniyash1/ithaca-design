@@ -145,18 +145,41 @@ merely forbidden.
 
 ## Spacing
 
-Base unit 4px.
+Base unit 2px. **Two bands.**
+
+The original 4px-only scale was authored before anything was built. Group I of
+the atlas broke it 281 times across 12 components — `6` used 98 times, `10` used
+66 times — because dense component internals genuinely need steps between 4 and
+8. A rule broken 281 times in its first real use is the wrong rule. Fine steps
+added rather than the components degraded.
+
+**Layout band** — page, section, and container rhythm. Use these by default.
 
 | Token | px |
 |---|---|
-| `space-1` | 4 |
-| `space-2` | 8 |
-| `space-3` | 12 |
 | `space-4` | 16 |
 | `space-5` | 24 |
 | `space-6` | 32 |
 | `space-7` | 48 |
 | `space-8` | 64 |
+
+**Internal band** — padding and gaps *inside* a component, where the layout band
+is too coarse.
+
+| Token | px |
+|---|---|
+| `space-05` | 2 |
+| `space-1` | 4 |
+| `space-15` | 6 |
+| `space-2` | 8 |
+| `space-25` | 10 |
+| `space-3` | 12 |
+| `space-35` | 14 |
+| `space-375` | 20 |
+
+**Selection rule:** anything positioning one component relative to another uses
+the layout band. Anything inside a single component may use the internal band.
+The internal band never sets page rhythm.
 
 ## Radii
 

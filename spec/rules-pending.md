@@ -256,4 +256,58 @@ one button?* The check is fine. It is the threshold that is under-evidenced.
 
 ---
 
+## 004 — The 44px row ceiling and label wrapping cannot both hold
+
+**Status:** open
+**Found:** 19 Aug 2026, building atlas 44 (Metadata list) in group D
+**Kind:** refusal rule — scope and conflict
+**Blocks:** nothing yet. Will recur in every list-like component with a label column.
+
+### What happened
+
+`Data/Metadata list`, Labels=Long variant, renders rows at **50px** against a
+declared ceiling of 44px.
+
+The cause is not carelessness. Component 44's stated hard part is *"label/value
+column ratio at long labels"*, and the design decision taken was: **long labels
+wrap inside their own column rather than pushing the value column out of
+alignment**, because a ragged value column is unreadable. Wrapping to two lines
+costs ~16px, which is exactly the overshoot.
+
+The two rules are individually right and jointly unsatisfiable:
+
+- *High density: maximum 44px per row.*
+- *Long labels must not break column alignment.*
+
+Something has to give, and the spec does not say what.
+
+### Options, none free
+
+1. **Truncate the label.** Holds the ceiling, but a metadata label truncated at
+   ~18 characters is often unidentifiable — "Last contract amendment…" and
+   "Last contract renewal…" collide.
+2. **Let the row grow.** Readable, breaks the ceiling. If permitted, the rule
+   needs to say *which* rows it binds.
+3. **Scope the ceiling to tabular rows only.** Likely the real answer. The
+   threshold exists so a table shows 12+ rows in a 900px viewport; a metadata
+   list is not scanned that way and has no such requirement.
+
+### Why this matters beyond one component
+
+The same collision was hit and resolved differently minutes earlier:
+`Agent/Tool-call row` came in at 52px because it stacked the tool name over its
+status. There the ceiling was the better master — putting status inline dropped
+it to 34px and genuinely improved density. So the ceiling is doing real work and
+should not simply be loosened.
+
+The distinction that seems to be emerging: **the ceiling binds rows in a
+scannable vertical stack of like items, and does not bind rows in a
+label/value reference block.** That is a scoping rule, and it needs writing down
+before group F, where surfaces and list items multiply.
+
+**Self-check (once scoped):** *is this row part of a scannable stack of like
+items? If yes, height ≤ 44px.*
+
+---
+
 *Append new entries above this line as they are found. Number sequentially.*

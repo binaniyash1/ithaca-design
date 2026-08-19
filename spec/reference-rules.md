@@ -90,6 +90,41 @@ they chose it consistently enough to be one rule rather than three.
 *Chosen: Peec's `--` over Linear's "Set priority" affordance. The
 "split by context" option was offered and declined.*
 
+> ### ✅ Independent support — the strongest evidence any rule here has
+>
+> **Two products converge on this from opposite design opinions.**
+>
+> - **Peec AI** renders unset metrics as `--`. Restrained, hairline, semantic
+>   colour only.
+> - **[ClickUp](https://mobbin.com/screens/1c903fb6-5c68-48ac-8a0f-08510bf4efa0)**
+>   renders unset properties as **"Empty"**. Dense, chromatic, affordance-heavy —
+>   a product that reaches for a control wherever it can, and still declines to
+>   put a verb in the value slot.
+>
+> Found independently: ClickUp was pulled at P1.2 to re-anchor screen 3, not to
+> test R1, and the convergence surfaced on the way past.
+>
+> **Why this matters for how much to trust it.** A rule derived from one source
+> is a description of that source until something else confirms it. When two
+> products that agree on almost nothing else land on the same answer, the answer
+> is likely a property of the *problem* rather than of either house style.
+>
+> **Rules with independent support are materially less likely to need revisiting
+> than rules derived from a single source.** Weight them accordingly when they
+> conflict, and spend review time on the single-source rules instead.
+
+**Evidence strength across the derived rules:**
+
+| Rule | Sources | Strength |
+|---|---|---|
+| **R1** absent value is reported, not sold | Peec + ClickUp, converging from opposite opinions | **Independent — high** |
+| **R2** on-demand chrome overlays | Midday (chosen) vs Peec (rejected) | Single-source — revisit if it bites |
+| **R3** emphasis changes fill, not structure | Dribbble (chosen) vs Asana (rejected) | Single-source — revisit if it bites |
+
+The same test applies to `rules-pending.md` **003**, which is explicitly logged
+as thin-evidence: adopted on two samples from one category. That is the opposite
+end of this scale and the reason it carries a revisit date.
+
 > **A value slot with no value renders a neutral placeholder. It never renders
 > an imperative verb.**
 >

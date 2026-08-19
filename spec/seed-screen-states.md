@@ -255,10 +255,74 @@ If time runs short, the honest order to cut in is:
 
 1. **Never cut** the three empty states, failed-to-load, or any ugly-data case —
    these are what a PM generates first and where the system fails
-2. Cut **responsive tablet** before mobile-web; 1024 is mostly interpolation
-3. Cut **first-run vs returning** where you have decided they are identical —
-   but record the decision
+2. Cut **first-run vs returning** where you have decided they are identical —
+   but **record the decision**, because it is a decision and not an omission
+3. Cut **responsive tablet** before mobile-web; 1024 is mostly interpolation
 4. Cut **motion** states last; they are Phase 2.4's problem anyway
+
+*Order of 2 and 3 revised 19 Aug 2026.* Tablet is **derivable later** — with
+desktop and mobile-web drawn, 1024 is interpolation and can be reconstructed by
+anyone. First-run versus returning is **a product decision that changes what the
+screen is for**: whether it teaches or serves. Retrofitting it means revisiting
+the screen's purpose, not just its widths, so it is the more expensive thing to
+defer even though it looks like the smaller one.
 
 Do not cut permission-denied. It is the state most likely to be discovered in
 production by someone who should not have seen something.
+
+
+---
+
+## Open design questions
+
+**Decide these while drawing, not before.** Each is a question the spec cannot
+answer from the outside — the answer only becomes obvious once there is a real
+screen with real content in front of you. Record what you chose and why; these
+feed **P2.3**, where the rules layer gets authored.
+
+### Q1 — S3 drawer: stacked form or expanding field chips?
+
+ClickUp builds its create form as **field chips** (`Assignee`, `Due date`,
+`Priority`, `Tags`) that expand into inputs on click. The conventional
+alternative is a **stacked form** — every field visible, labelled, in order.
+
+- Chips keep the drawer short and make the common case fast, but they hide the
+  shape of the record and make validation harder to place.
+- A stack is honest about what the form contains and gives every field a stable
+  home for its error, but it is long, and most fields are usually left untouched.
+
+**What to watch for while drawing:** where the validation error goes in the chip
+version. If there is no good answer, that decides it.
+
+### Q2 — S1: does three-region survive being drawn?
+
+Three-region is a **deliberate choice against Manus 1.6**, which shipped it and
+retreated to two-region with artifacts inline. Three products still carry a
+right-hand region (Lindy, ChatGPT, Perplexity), which is why it stands — but
+Manus is the only one that has run the experiment to a conclusion.
+
+**What to watch for:** whether the chat column still feels like the primary
+surface at 36% width, and whether the ~25% index mode earns a whole region or is
+really a collapsed rail pretending to be a pane. If the index mode looks thin
+when drawn, that is evidence for Manus's retreat and the condition proposed in
+`reference-rules.md` — *a pane only when there is live, inspectable work* —
+becomes the rule rather than a candidate.
+
+### Q3 — does the two-density-mode split hold?
+
+Low density and high density are declared mutually exclusive, and nothing is
+allowed to average them. **Watch for anything that sits awkwardly between.**
+
+Known candidates already visible:
+
+- The **S3 create/edit drawer** — an input surface (low-density instinct:
+  generous, shadowed) living inside a dense table screen (high-density: hairline,
+  flat). Which wins, and does the drawer change mode as it opens?
+- **S1's composer** — built low density in the atlas, but it sits under a
+  transcript that carries high-density tool-call rows.
+- **S5's FAQ accordion** — low density by default, but a 40-item FAQ is a dense
+  list by any measure.
+
+If something genuinely sits between, **do not invent a third mode.** Pick a side,
+draw it, and log why in `rules-pending.md`. A third density is how two clear
+languages become three vague ones.

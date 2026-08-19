@@ -8,39 +8,58 @@ marked COMPLETE, and resume from the next group in the build order.
 
 **Target:** Figma file `wqs3OgPvp03s0R0wUTzUHj`, page **`Atlas — scratch`** (id `6:2`).
 **Build order:** I · D · E · F · A · B · C · G · H · J · K
+**Layout:** single column at x=0, 200px between wrappers. Each wrapper is
+`label (20/600)` → `COMPONENT_SET` → `note (13/400)`.
 
 ---
 
 ## STATUS — ON HOLD
 
-**Complete:** group **I** (80–91) and group **D** (34–48). 27 component sets,
-90 variants on the page.
+**Paused 19 Aug 2026** to return to Phase 1 of the execution plan (seed screens,
+drawn by hand in Figma). Not blocked, not failed — parked in a good state and
+resumes on request.
 
-**Paused deliberately on 19 Aug 2026** to return to Phase 1 of the execution
-plan (seed screens and reference calibration). This is not a blocked or failed
-run — the atlas is parked in a good state and resumes on request.
+### Where it stands
 
-**On resume, the next group is E (49–55)**, then in order:
-**F · A · B · C · G · H · J · K**.
+| | |
+|---|---|
+| **Complete** | group **I** (80–91) · group **D** (34–48) |
+| **On the page** | 27 component sets, 90 variants |
+| **Next on resume** | **group E (49–55)** |
+| **Then, in order** | **F · A · B · C · G · H · J · K** |
 
-**One rebuild is outstanding before the atlas is consistent:**
+### Outstanding before the atlas is internally consistent
 
-- `Data/Property row` **State=Empty** renders "Set priority" in the value slot.
-  P1.1 rule **R1** rejects that — the slot takes a neutral placeholder, never an
-  imperative verb, while the row stays fully interactive. Rebuild it against all
-  three R1 self-checks in `spec/reference-rules.md`, not just the first.
-- `Agent/Work-surface pane` is unaffected structurally, but its anchor moved
-  from Manus to Lindy (primary) with ChatGPT and Perplexity secondary. Its two
-  width modes (~25% index, ~60%+ live work) are not yet built as variants.
+- [ ] **Rebuild `Data/Property row` State=Empty.** It renders "Set priority" in
+      the value slot. P1.1 rule **R1** rejects that: the slot takes a neutral
+      placeholder, never an imperative verb, **and the row stays fully
+      interactive**. Rebuild against **all three** R1 self-checks in
+      `spec/reference-rules.md` — checking only for the verb would pass a row
+      that is inert, which is the worse failure.
+- [ ] **Add the two width variants to `Agent/Work-surface pane`.** Structurally
+      unaffected, but its anchor moved from Manus to Lindy (primary), with
+      ChatGPT and Perplexity secondary. The pane has two modes — **~25% as a
+      source/artifact index, ~60%+ for live work with the nav collapsed** — and
+      neither is built yet.
 
-Two things to read first:
+### Already corrected, no action needed
+
+- **Atlas row 45's note has been fixed.** It previously read *"'Set priority' as
+  an affordance, not a blank"* — the option R1 rejects. It now states the
+  placeholder rule together with the interactivity requirement, and flags the
+  divergence from Linear as deliberate so nobody reverts it.
+- **Atlas row 87 re-anchored** to Lindy · ChatGPT · Perplexity, with both width
+  modes recorded.
+
+### Read before resuming
 
 - `spec/rules-pending.md` **004** — the 44px row ceiling versus label wrapping.
   Unresolved, and it will recur in group F.
-- The spacing scale in `spec/tokens-v0.md` now has two bands. The whole page is
+- `spec/reference-rules.md` — R1, R2, R3 did not exist when groups I and D were
+  built. R2 (overlay versus reserve) is the one most likely to contradict
+  something already on the page.
+- `spec/tokens-v0.md` — the spacing scale now has two bands. The whole page is
   on-scale; keep new work on the internal band for component interiors.
-**Layout:** single column at x=0, 200px between wrappers. Each wrapper is
-`label (20/600)` → `COMPONENT_SET` → `note (13/400)`.
 
 ---
 

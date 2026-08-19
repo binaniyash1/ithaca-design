@@ -57,3 +57,6 @@ coverage/
 .Spotlight-V100
 .Trashes
 Thumbs.db
+
+# Generated — built from site/ by scripts/build-docs.mjs
+/docs/

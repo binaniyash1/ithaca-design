@@ -1,0 +1,13 @@
+{
+  "//": "No version field here on purpose. The only version in this repo is in plugins/ithaca-design/.claude-plugin/plugin.json.",
+  "name": "ithaca-design",
+  "private": true,
+  "description": "Marketplace and docs site for the Ithaca Design Claude Code plugin.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-docs.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ithaca Design — install</title>
+<meta name="description" content="Install Ithaca Design, a Claude Code plugin that generates product screens from a canonical design system.">
+<meta name="robots" content="noindex">
+<style>
+  /* Light mode only. No dark-mode styles by design — v1 is single-theme. */
+  :root {
+    --ink:        #1a1714;
+    --ink-soft:   #6b625a;
+    --ink-faint:  #938880;
+    --accent:     #b4541f;   /* the one decorative accent */
+    --accent-wash:#fbeadd;
+    --surface:    #fffdfa;
+    --code-bg:    #f8f1e8;
+    --warn-bg:    #fdf0dc;
+    --warn-ink:   #7c4a12;
+
+    /* one radius scale */
+    --r-lg: 16px;
+    --r-md: 10px;
+    --r-sm: 6px;
+
+    /* two weights, no others */
+    --w-normal: 400;
+    --w-bold:   600;
+
+    --shadow-card: 0 1px 2px rgba(56,40,24,.05), 0 14px 38px -10px rgba(56,40,24,.14);
+    --shadow-soft: 0 1px 2px rgba(56,40,24,.04), 0 6px 18px -8px rgba(56,40,24,.10);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Inter, system-ui, sans-serif;
+    font-weight: var(--w-normal);
+    color: var(--ink);
+    background: #fdf8f2;
+    background-image:
+      radial-gradient(1200px 680px at 8% -10%,  #fbe6d0 0%, rgba(251,230,208,0) 60%),
+      radial-gradient(1000px 560px at 96% 2%,   #f3e2d2 0%, rgba(243,226,210,0) 55%),
+      radial-gradient(900px  700px at 50% 108%, #f7e9dc 0%, rgba(247,233,220,0) 60%);
+    background-attachment: fixed;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 760px; margin: 0 auto; padding: 72px 24px 96px; }
+
+  /* ---------- header ---------- */
+  header { margin-bottom: 46px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    font-weight: var(--w-bold); color: var(--accent);
+    background: var(--accent-wash);
+    padding: 5px 11px; border-radius: 100px; margin: 0 0 20px;
+  }
+  h1 { font-size: 40px; line-height: 1.14; letter-spacing: -.022em; font-weight: var(--w-bold); margin: 0 0 14px; }
+  .lede { font-size: 18px; color: var(--ink-soft); margin: 0 0 26px; max-width: 60ch; }
+
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    display: inline-flex; align-items: baseline; gap: 7px;
+    background: var(--surface); border-radius: 100px;
+    padding: 7px 15px; font-size: 14px; color: var(--ink-soft);
+    box-shadow: var(--shadow-soft);
+  }
+  .pill strong { font-weight: var(--w-bold); color: var(--ink); }
+
+  /* ---------- sections ---------- */
+  section {
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    padding: 34px 36px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-card);
+  }
+  h2 { font-size: 21px; font-weight: var(--w-bold); letter-spacing: -.012em; margin: 0 0 8px; }
+  h3 { font-size: 15px; font-weight: var(--w-bold); margin: 26px 0 8px; }
+  p  { margin: 0 0 14px; color: var(--ink-soft); }
+  p:last-child, ul:last-child { margin-bottom: 0; }
+  strong { font-weight: var(--w-bold); color: var(--ink); }
+  a { color: var(--accent); text-underline-offset: 3px; }
+
+  ol, ul { color: var(--ink-soft); padding-left: 22px; margin: 0 0 14px; }
+  li { margin-bottom: 7px; }
+  li:last-child { margin-bottom: 0; }
+
+  .step-note { font-size: 14px; color: var(--ink-faint); margin-top: 10px; }
+
+  /* ---------- code ---------- */
+  .code {
+    position: relative;
+    background: var(--code-bg);
+    border-radius: var(--r-md);
+    padding: 16px 96px 16px 18px;
+    margin: 0 0 14px;
+    overflow-x: auto;
+  }
+  .code pre {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13.5px; line-height: 1.75; color: var(--ink);
+    white-space: pre; 
+  }
+  .copy {
+    position: absolute; top: 12px; right: 12px;
+    font: inherit; font-size: 12.5px; font-weight: var(--w-bold);
+    color: var(--accent); background: var(--surface);
+    border: 0; border-radius: var(--r-sm);
+    padding: 6px 12px; cursor: pointer;
+    box-shadow: var(--shadow-soft);
+  }
+  /* Shadow is dropped here on purpose: refusal rule 2 forbids a shadow
+     layered on a coloured background. Reads as a press-in instead. */
+  .copy:hover { background: var(--accent-wash); box-shadow: none; }
+  .copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  code.inline {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px; background: var(--code-bg);
+    padding: 2px 6px; border-radius: var(--r-sm); color: var(--ink);
+  }
+
+  /* ---------- warning ---------- */
+  .warn {
+    background: var(--warn-bg);
+    border-radius: var(--r-md);
+    padding: 18px 20px;
+    margin: 0 0 14px;
+  }
+  .warn p { color: var(--warn-ink); margin: 0; }
+  .warn p + p { margin-top: 9px; }
+  .warn strong { color: var(--warn-ink); }
+
+  /* ---------- verification ---------- */
+  .expect {
+    background: var(--accent-wash);
+    border-radius: var(--r-md);
+    padding: 18px 20px;
+    margin: 0 0 14px;
+  }
+  .expect pre {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13.5px; line-height: 1.6; color: var(--ink);
+    white-space: pre-wrap; word-break: break-word;
+  }
+
+  /* ---------- changelog empty state ---------- */
+  .empty { padding: 6px 0 2px; }
+  .empty-title { font-weight: var(--w-bold); color: var(--ink); margin: 0 0 6px; }
+  .release + .release { margin-top: 22px; }
+  .release h3 { margin-top: 0; font-size: 16px; }
+  .release .date { font-weight: var(--w-normal); color: var(--ink-faint); margin-left: 8px; font-size: 13px; }
+
+  footer { margin-top: 34px; font-size: 13.5px; color: var(--ink-faint); }
+  footer a { color: var(--ink-faint); }
+
+  @media (max-width: 620px) {
+    .page { padding: 48px 18px 72px; }
+    h1 { font-size: 31px; }
+    section { padding: 26px 22px; border-radius: var(--r-md); }
+    .code { padding-right: 18px; padding-top: 46px; }
+    .copy { top: 10px; right: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Claude Code plugin</p>
+    <h1>Ithaca Design</h1>
+    <p class="lede">
+      Describe a feature in plain language and get a screen built from real
+      system parts — tokens, component contracts, and a rules layer — instead of
+      invented generic UI.
+    </p>
+    <div class="meta">
+      <span class="pill">Version <strong>{{VERSION}}</strong></span>
+      <span class="pill">Updated <strong>{{UPDATED}}</strong></span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Install</h2>
+    <p>Paste both lines into Claude Code, one after the other:</p>
+    <div class="code">
+      <button class="copy" type="button">Copy</button>
+<pre>/plugin marketplace add binaniyash1/ithaca-design
+/plugin install ithaca-design@ithaca</pre>
+    </div>
+    <p class="step-note">
+      The repository is private while the system is being built. If the first
+      line fails with a not-found error, you need read access — ask Yash.
+    </p>
+
+    <h3>Then turn on auto-update</h3>
+    <p>
+      This step is not optional, and skipping it fails <em>silently</em>. Local
+      and third-party marketplaces ship with auto-update <strong>off</strong>,
+      so without it your catalogue never refreshes and you sit on an old version
+      indefinitely with no error to tell you.
+    </p>
+    <ol>
+      <li>Run <code class="inline">/plugin</code></li>
+      <li>Open the <strong>Marketplaces</strong> tab</li>
+      <li>Select <strong>ithaca</strong></li>
+      <li>Choose <strong>Enable auto-update</strong></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>No terminal? Paste this instead</h2>
+    <p>
+      You do not need to know what any of the above means. Open Claude Code and
+      paste this message as if you were talking to it:
+    </p>
+    <div class="code">
+      <button class="copy" type="button">Copy</button>
+<pre>Please install the Ithaca Design plugin for me.
+
+Add the marketplace binaniyash1/ithaca-design, then install
+the plugin ithaca-design@ithaca, then enable auto-update for
+the ithaca marketplace.
+
+Tell me each command before you run it, and tell me when I
+need to restart.</pre>
+    </div>
+    <p class="step-note">
+      If it reports that the repository cannot be found, you do not have access
+      yet — that is the only likely failure here.
+    </p>
+  </section>
+
+  <section>
+    <h2>Restart before you test it</h2>
+    <div class="warn">
+      <p><strong>The plugin will not work in a session that was already open.</strong></p>
+      <p>
+        Skills load when a session starts, so a session running during the
+        install knows nothing about it. Quit Claude Code and reopen it, or run
+        <code class="inline">/reload-plugins</code> in the open session. If that
+        warns about the prompt cache, run
+        <code class="inline">/reload-plugins --force</code>.
+      </p>
+      <p>
+        Testing before restarting is the single most common way to conclude the
+        plugin is broken when it installed perfectly.
+      </p>
+    </div>
+    <p class="step-note">
+      One quirk worth knowing: the reload summary counts only commands, so it can
+      report <strong>0 skills</strong> even when the skill loaded correctly.
+      Ignore that number and use the check below instead.
+    </p>
+  </section>
+
+  <section>
+    <h2>Verify it worked</h2>
+    <p>Start a fresh session and type exactly this:</p>
+    <div class="code">
+      <button class="copy" type="button">Copy</button>
+<pre>design me a settings page</pre>
+    </div>
+    <p>The reply must open with this line, word for word:</p>
+    <div class="expect">
+      <pre>{{ANNOUNCE}}</pre>
+    </div>
+    <p>Read the result like this:</p>
+    <ul>
+      <li><strong>Line is there, version matches above</strong> — working, and current.</li>
+      <li><strong>Line is missing entirely</strong> — the plugin did not load. You almost certainly did not restart.</li>
+      <li><strong>Line is there but the version is older than <strong>{{VERSION}}</strong></strong> — your install is stale. Auto-update is off, or has not run yet.</li>
+    </ul>
+    <p class="step-note">
+      At version {{VERSION}} the skill is a canary: it announces itself, tells
+      you the design system is not authored yet, and asks what you were trying to
+      build. It cannot generate a screen, and it will refuse rather than improvise
+      one. That refusal is the feature.
+    </p>
+  </section>
+
+  <section>
+    <h2>Changelog</h2>
+    {{CHANGELOG}}
+  </section>
+
+  <footer>
+    <p>
+      Ithaca Design — version {{VERSION}}, updated {{UPDATED}}.
+      Version and verification line on this page are generated from the plugin
+      manifest, so they cannot drift from what ships.
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.parentElement.querySelector('pre').textContent;
+      navigator.clipboard.writeText(text).then(function () {
+        var was = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = was; }, 1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>

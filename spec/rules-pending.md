@@ -28,7 +28,7 @@ the reason).
 
 ## 001 — "No shadow on a coloured background" has no threshold
 
-**Status:** proposed
+**Status:** resolved → [`tokens-v0.md`](tokens-v0.md) (19 Aug 2026)
 **Found:** 19 Aug 2026, building the install page (P0.4)
 **Kind:** refusal rule — sharpening an existing one
 **Blocks:** every component contract that declares a depth strategy
@@ -80,7 +80,31 @@ Refusal: a node carrying a shadow must have its fill bound to --surface
 answerable from the token binding without inspecting a colour value. It also
 survives brand overrides untouched, since it tests the role rather than the hex.
 
-### Open questions for P2.3
+### Resolution
+
+`tokens-v0.md` names the surface token, which is what the proposed fix needed:
+
+```
+--surface = neutral-0 (#fffdfa)
+self-check:  is this element's fill --surface?   yes → shadow allowed
+                                                  no  → shadow forbidden
+```
+
+Binary, mechanical, answerable from the token binding without inspecting a
+colour value, and unaffected by brand overrides since it tests the role rather
+than the hex. The per-state requirement is carried into the token file: the
+check runs per state, because a fill that changes on hover changes the answer.
+
+High density forbids shadows outright (`shadow-none`, always), so this rule only
+ever binds in low density. Stated there so it is not misread as loosening the
+high-density prohibition.
+
+Carried forward, not blocking: whether a brand may register more than one
+shadow-bearing surface. If so the check becomes "is the fill in the
+`shadow-permitted` set" — still binary, but needs a declared set per brand.
+Revisit at P2.1 when real tokens land.
+
+### Original open questions (answered above)
 
 - Does a brand get to register more than one shadow-bearing surface? If yes, the
   check becomes "is the fill in the `shadow-permitted` set", which is still
@@ -184,6 +208,51 @@ first-run copy on a filtered result.
 
 The second clause is the checkable one and the one worth having. The rest waits
 on the contracts existing.
+
+---
+
+## 003 — "One button, no secondary" rests on two samples
+
+**Status:** open — **thin evidence**
+**Found:** 19 Aug 2026, authoring the empty-state contracts
+**Kind:** refusal rule, already adopted
+**Revisit:** P2.3
+
+### What was adopted
+
+[`empty-states.md`](empty-states.md) makes it a hard prohibition across all
+three empty states:
+
+> Never more than **one** button. No secondary button, ever.
+
+### The problem with it
+
+**The evidence is two reference screens.** Atlas row 64 cites Tally and
+Typeform; both use a single primary CTA with no secondary. That is the entire
+basis. Two samples from two products in one category is a coincidence as easily
+as a principle, and the rule was adopted anyway because the failure mode of
+permitting two buttons — a first-run state where "create" and "import" compete
+and neither reads as the path — is worse than the cost of forbidding it.
+
+That reasoning justifies a **default**. It does not justify a **refusal**, and
+this was written as a refusal.
+
+Recording it here so the thinness is visible rather than inherited. The risk is
+that a rule adopted on two samples hardens into an assumption nobody re-examines,
+and by P5 it is load-bearing in fifty contracts.
+
+### What would settle it
+
+- Real cases from the seed screens where an empty state plausibly wants two
+  actions — first-run with both "create" and "import" is the obvious candidate.
+- Whether the same ceiling holds outside empty states, or whether this is
+  actually a broader rule about action count in low-information surfaces.
+- If it survives: keep as a refusal and say the evidence is behavioural, not
+  observational. If it does not: demote to a selection rule ("prefer one action;
+  a second requires a stated reason") and update all three contracts.
+
+**Self-check (unchanged either way):** *does this empty state contain more than
+one button?* The check is fine. It is the threshold that is under-evidenced.
 
 ---
 

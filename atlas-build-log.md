@@ -23,7 +23,17 @@ run — the atlas is parked in a good state and resumes on request.
 **On resume, the next group is E (49–55)**, then in order:
 **F · A · B · C · G · H · J · K**.
 
-Nothing needs re-doing before resuming. Two things to read first:
+**One rebuild is outstanding before the atlas is consistent:**
+
+- `Data/Property row` **State=Empty** renders "Set priority" in the value slot.
+  P1.1 rule **R1** rejects that — the slot takes a neutral placeholder, never an
+  imperative verb, while the row stays fully interactive. Rebuild it against all
+  three R1 self-checks in `spec/reference-rules.md`, not just the first.
+- `Agent/Work-surface pane` is unaffected structurally, but its anchor moved
+  from Manus to Lindy (primary) with ChatGPT and Perplexity secondary. Its two
+  width modes (~25% index, ~60%+ live work) are not yet built as variants.
+
+Two things to read first:
 
 - `spec/rules-pending.md` **004** — the 44px row ceiling versus label wrapping.
   Unresolved, and it will recur in group F.

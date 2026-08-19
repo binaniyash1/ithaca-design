@@ -75,7 +75,7 @@ Priority tiers: **P1** needed for the five seed screens. **P2** needed for a com
 | 42 | Row group / collapsible section | P2 | [Height kanban](https://mobbin.com/screens/913e271b-5104-454a-96aa-56b7c255c167) | Count badge, sticky group header |
 | 43 | Pagination | P1 | primitive | Page-size control; unknown-total case |
 | 44 | Metadata list | P2 | [Twenty task detail](https://mobbin.com/screens/18f1f96e-ff54-4199-ae71-86fd65ddd0f2) | Label/value column ratio at long labels |
-| 45 | Property row | P1 | [Linear detail](https://mobbin.com/screens/d0f8ebba-34b7-469c-a708-1069e55a3e02) | Empty state per row — "Set priority" as an affordance, not a blank |
+| 45 | Property row | P1 | [Linear detail](https://mobbin.com/screens/d0f8ebba-34b7-469c-a708-1069e55a3e02) | Empty renders a neutral placeholder, never an imperative verb (R1) — but the row stays live, so the affordance moves to hover and click-to-edit rather than the value slot. Linear does the opposite; this is a deliberate divergence |
 | 46 | Activity feed item | P1 | [Linear detail](https://mobbin.com/screens/d0f8ebba-34b7-469c-a708-1069e55a3e02) | System event vs human comment; grouping consecutive events |
 | 47 | Sub-item list | P2 | [Linear detail](https://mobbin.com/screens/d0f8ebba-34b7-469c-a708-1069e55a3e02) | Progress count; inline add row |
 | 48 | Kanban column | P3 | [Height kanban](https://mobbin.com/screens/913e271b-5104-454a-96aa-56b7c255c167) · [Basecamp](https://mobbin.com/screens/8971f56c-41b3-4360-ae1a-ec05bb2b0b84) | Drop target, drag ghost, empty column, WIP limit |
@@ -144,7 +144,7 @@ The differentiated set. Fewest good references anywhere, which is exactly why it
 | 84 | Reasoning trace | P1 | [ChatGPT activity](https://mobbin.com/screens/b045e2cd-4f54-424a-97f6-4c5954f0c1e1) | Live-streaming vs settled. Collapse after completion |
 | 85 | Streaming indicator | P1 | [Lindy chat](https://mobbin.com/screens/9f4affd5-f387-4149-860e-95c83f9bbba5) | Ephemeral status text — Lindy's rotating lines. Must not shift layout |
 | 86 | Artifact card | P1 | [Perplexity](https://mobbin.com/screens/b16cbdbd-08e2-4281-b334-19f52585ef1c) | Type icon, title, preview, open action. Generating vs ready |
-| 87 | Work-surface pane | P1 | [Lindy browser/terminal](https://mobbin.com/screens/9f4affd5-f387-4149-860e-95c83f9bbba5) | Tabbed panes, close, expand. Empty state before work starts |
+| 87 | Work-surface pane | P1 | [Lindy browser/terminal](https://mobbin.com/screens/9f4affd5-f387-4149-860e-95c83f9bbba5) · [ChatGPT](https://mobbin.com/screens/73833b79-1dd5-4354-8fc4-a2e99c33a75e) · [Perplexity](https://mobbin.com/screens/b16cbdbd-08e2-4281-b334-19f52585ef1c) | Tabbed panes, close, expand. Empty state before work starts. Two width modes — ~25% as a source/artifact index, ~60%+ for live work with the nav collapsed. Re-anchored off Manus, which retreated from three-region to two-region in 1.6 |
 | 88 | Source / citation chip | P2 | [Cohere playground](https://mobbin.com/screens/dace5f8f-6695-435f-ae31-0984f2e40dcf) | Inline vs footer. Favicon plus count |
 | 89 | File list item | P1 | [Manus file modal](https://mobbin.com/screens/a6af52d3-15ee-4bb1-88e9-3059b9614c21) | Type icon, timestamp, overflow menu, link indicator |
 | 90 | Suggested prompt chips | P1 | [Lindy home](https://mobbin.com/screens/1469c839-23d1-48ae-bce5-651fa30e5a34) | Wrapping across rows; icon per chip; "see all" |

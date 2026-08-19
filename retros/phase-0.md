@@ -4,34 +4,81 @@
 **Plugin version at end of phase:** 0.1.0
 **Commits:** `9abaded` scaffold · `ca94196` canary skill · `7ecf361` install page
 
+**Gate 0: PASS**, with auto-update carried forward as the one pending item.
+
 Goal was to prove install → restart → trigger → version announcement against a
 skill that does nothing, and find the friction before there is content to lose.
+It did, and the trust loop is closed end to end.
 
 ---
 
 ## Gate 0 — trigger tests
 
-> **NOT YET RECORDED.** These require a session started *after* the install.
-> The session that built Phase 0 predates it, so the skill was not in its
-> loaded set and the tests could not be run. Fill this table in from a fresh
-> session before starting Phase 1 — an unrun gate is a failed gate.
+**Result: PASS.** All five checks behaved as specified. Run from a session
+started after the install.
 
-| # | Prompt | Expected | Fired? | Notes |
+| # | Prompt | Expected | Result | Notes |
 |---|---|---|---|---|
-| 1 | `design me a settings page` | fires without the skill being named | — | |
-| 2 | (the reply to #1) | opens with exactly `Using the Ithaca agent skill — v0.1.0, updated 19 Aug 2026.` | — | |
-| 3 | `what's the capital of France` | does **not** fire | — | |
-| 4 | `make this better` | does **not** fire | — | |
+| 1 | `design me a settings page` | fires without the skill being named | ✅ **FIRED** | Triggered on plain-language phrasing, skill never named |
+| 2 | (the reply to #1) | opens with the exact announcement line | ✅ **EXACT MATCH** | `Using the Ithaca agent skill — v0.1.0, updated 19 Aug 2026.` verbatim, first line |
+| 3 | `what's the capital of France` | does **not** fire | ✅ did not fire | Gimme. Proves little |
+| 4 | `make this better` | does **not** fire | ✅ did not fire | **The negative clause holds.** This is the result that counts |
+| 5 | `I need a way for users to see their invoices` | (predicted) does not fire | ✅ did not fire | Known under-fire case, predicted in advance. See below |
 
-**Test 4 is the one that matters.** Test 3 is a gimme — nothing about a
-geography question resembles a request to build UI, and passing it proves
-almost nothing. Test 4 is the honest probe of the negative clause in the
-frontmatter description, which is the only thing narrowing an otherwise wide
-net. If exactly one of these is worth reading carefully, it is that one.
+### All three canary behaviours confirmed
 
-If test 1 fails but test 4 passes, the description is too conservative — widen
-it with outcome-shaped phrasings ("a way for users to…", "somewhere to show…")
-rather than by deleting the negative clause. That clause is load-bearing.
+The reply to test 1 did every required thing and nothing extra:
+
+1. Opened with the version line, exactly, before any other text.
+2. Refused to generate — stated no tokens, no component contracts, no rules
+   layer exist, and **explicitly declined to fall back to Tailwind or shadcn
+   defaults**. That refusal is the whole point. A plausible generic screen here
+   would have taught the operator the plugin works when it does not.
+3. Asked one question, and said the answer is not stored.
+
+The version-announcement loop is closed end to end: manifest → skill → live
+install page, all reading `0.1.0`, with the build refusing to ship them out of
+step.
+
+### On test 4, and on test 5
+
+**Test 4 is the one that mattered and it passed.** Test 3 was never in doubt —
+nothing about a geography question resembles a request to build UI. Test 4
+probes the only thing narrowing an otherwise wide net: the negative clause
+ending *"…or open-ended requests to improve something that do not name a UI
+surface to build."* Without it, "improve" reads as adjacent to "design" and the
+skill fires on every refactor request in the repo. It held.
+
+**Test 5 under-fired, exactly as predicted when the description was written.**
+The prompt names no UI noun — no screen, page, table, or view — so there is
+nothing for the description to match on. This is the anticipated cost of landing
+the trigger on the conservative side of the dial, and the reasoning stands: a
+false positive hijacks an unrelated task and answers "I cannot generate screens"
+to someone asking about a database migration, which erodes trust during the exact
+phase meant to establish it. A false negative costs one retry.
+
+**Decision: do not widen the description.** The fix belongs in Phase 3's
+clarifying-question flow, not in the frontmatter. Outcome-shaped phrasing
+("a way for users to…", "somewhere to show…") is precisely how a PM talks, and
+the masterplan's premise is that such prompts get met with interrogation — but
+widening the net before there is anything to catch them with only produces
+confident wrong firing. Revisit at Phase 3, not before.
+
+### Gate 0 status
+
+| Check | Result |
+|---|---|
+| Plugin appears in the installed list | ✅ `ithaca-design@ithaca` v0.1.0, enabled, user scope |
+| Fires on `design me a settings page` after restart | ✅ |
+| Reply opens with the exact version line | ✅ |
+| `what's the capital of France` does not fire | ✅ |
+| Install page deploys; command works from a clean directory | ✅ live, rebuilds on push |
+| Auto-update refreshes the catalogue | ⏸ **PENDING** — see below |
+
+**Gate 0 passes**, with auto-update the single carried-forward item. It stays
+pending until the marketplace source switches from a local directory to
+`binaniyash1/ithaca-design`, because until then there is no remote to pull from
+and nothing to verify.
 
 ---
 

@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Build output
+dist/
+build/
+out/
+.next/
+.output/
+.svelte-kit/
+.astro/
+
+# Deployment
+.vercel/
+
+# Environment — never commit secrets; plugins are cached in plain text
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Caches
+.cache/
+.eslintcache
+.parcel-cache/
+*.tsbuildinfo
+
+# Editor
+.idea/
+*.swp
+*.swo
+.vscode/*
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db

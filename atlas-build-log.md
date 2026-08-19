@@ -8,6 +8,27 @@ marked COMPLETE, and resume from the next group in the build order.
 
 **Target:** Figma file `wqs3OgPvp03s0R0wUTzUHj`, page **`Atlas — scratch`** (id `6:2`).
 **Build order:** I · D · E · F · A · B · C · G · H · J · K
+
+---
+
+## STATUS — ON HOLD
+
+**Complete:** group **I** (80–91) and group **D** (34–48). 27 component sets,
+90 variants on the page.
+
+**Paused deliberately on 19 Aug 2026** to return to Phase 1 of the execution
+plan (seed screens and reference calibration). This is not a blocked or failed
+run — the atlas is parked in a good state and resumes on request.
+
+**On resume, the next group is E (49–55)**, then in order:
+**F · A · B · C · G · H · J · K**.
+
+Nothing needs re-doing before resuming. Two things to read first:
+
+- `spec/rules-pending.md` **004** — the 44px row ceiling versus label wrapping.
+  Unresolved, and it will recur in group F.
+- The spacing scale in `spec/tokens-v0.md` now has two bands. The whole page is
+  on-scale; keep new work on the internal band for component interiors.
 **Layout:** single column at x=0, 200px between wrappers. Each wrapper is
 `label (20/600)` → `COMPONENT_SET` → `note (13/400)`.
 

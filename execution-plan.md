@@ -70,12 +70,14 @@ Refusal rules need numbers or they are decoration.
 
 | Reference | What is taken |
 |---|---|
-| Lindy | Surface language — warm gradient wash, soft-shadow elevation, pill chips, generous negative space, low element count |
+| Lindy | Surface language — warm gradient wash, soft-shadow elevation, pill chips, generous negative space, low element count. **Also the primary agent-surface anchor** since P1.1 — right-hand work pane with tabs and a close control |
 | Peec AI | Structural language — hairline panels, no shadow, 12–13px type, tight rows, dense multi-panel dashboards, semantic tags |
-| Manus | Agent surfaces — three-region layout, tool-call rows, reasoning trace, artifact and file lists, modal over chat |
+| **ClickUp** | **Dense-table interaction under load** — bulk-action bar with live count, row selection, inline edit popovers, progressive create form. **Interaction only; never colour.** Promoted from reserve at P1.2, which answers masterplan open question 2 for ClickUp |
 | Linear | Detail-view discipline — property rail, activity feed, inline edit, restrained three-pane density |
 | Whop | Commerce and marketing colour confidence — pricing card, promo banner, FAQ accordion, media block |
-| Firecrawl, Amie, ClickUp | Held in reserve for later calibration passes |
+| ChatGPT, Perplexity | Secondary agent-surface support — right-hand pane, tab counts, artifact/source index |
+| ~~Manus~~ | **Demoted at P1.1.** Manus 1.6 retreated from three-region to two-region with artifacts inline. Retained as *evidence against* the three-region pattern, not as an anchor |
+| Firecrawl, Amie | Held in reserve for later calibration passes |
 
 **Rule for all references: reference → extracted rule → own component.** Never reference → component.
 
@@ -85,17 +87,21 @@ Each anchored to one reference screen, chosen so the five between them force the
 
 | # | Screen | Anchor | Forces into existence |
 |---|---|---|---|
-| 1 | Agent chat with work surface | [Manus](https://mobbin.com/screens/a6af52d3-15ee-4bb1-88e9-3059b9614c21) | Three-region shell, composer, message types, tool-call rows, reasoning trace, streaming state, artifact card, file list, modal layer with tab filters |
-| 2 | Dense dashboard | [Peec AI](https://mobbin.com/screens/0711fee8-0de2-4f0e-8b7c-16387d22f091) | Hairline panel grid, metric tiles, sparkline panel, ranked table, semantic tags, filter chip row |
-| 3 | Data table with bulk actions | [Peec AI](https://mobbin.com/screens/e69f99fe-8bac-4633-8803-5eb04c58277b) | Table, sortable column headers, row selection, bulk-action toolbar, sidebar filter tree, pagination, search |
-| 4 | Record detail and settings | [Linear](https://mobbin.com/screens/d0f8ebba-34b7-469c-a708-1069e55a3e02) | Property rail, property rows, inline edit, sub-item list, activity feed, comment composer, every input type, validation, destructive action |
+| 1 | Agent chat with work surface | [Lindy](https://mobbin.com/screens/9f4affd5-f387-4149-860e-95c83f9bbba5) · [ChatGPT](https://mobbin.com/screens/73833b79-1dd5-4354-8fc4-a2e99c33a75e) · [Perplexity](https://mobbin.com/screens/b16cbdbd-08e2-4281-b334-19f52585ef1c) | Three-region shell, composer, message types, tool-call rows, reasoning trace, streaming state, artifact card, file list, modal layer with tab filters, work-surface pane at both widths |
+| 2 | Dense dashboard | [Peec AI](https://mobbin.com/screens/0711fee8-0de2-4f0e-8b7c-16387d22f091) | Hairline panel grid, metric tiles, sparkline panel, ranked table, semantic tags, filter chip row, **list item** (top-domains list) |
+| 3 | Data table with bulk actions **and create/edit drawer** | [ClickUp](https://mobbin.com/screens/e9639493-e0a6-46c9-93d1-d3189cbdc3c7) | Table, sortable column headers, row selection, bulk-action toolbar, sidebar filter tree, pagination, search, **popover** (column visibility, date picker), **plus the full input surface in a create/edit drawer** — text input, textarea, select, combobox, multi-select with tokens, date range, file dropzone, field wrapper, fieldset, inline validation |
+| 4 | Record detail and settings | [Linear](https://mobbin.com/screens/d0f8ebba-34b7-469c-a708-1069e55a3e02) | Property rail, property rows, inline edit, sub-item list, activity feed, comment composer, **settings modality** — settings row, switch, checkbox, radio group, slider, multi-step wizard, destructive confirm |
 | 5 | Commerce landing page | [Whop](https://mobbin.com/screens/c1d2d1d6-5a34-45f9-8359-71ed69d5037a) | Hero, section wrappers, pricing card, promo banner, media block, FAQ accordion, footer, CTA |
 
 Two honest notes on this set.
 
 **Screen 5's anchor is a product page rather than a pure marketing landing.** That's deliberate — it forces the pricing card, accordion and promo banner into existence, which a hero-and-CTA landing page would not.
 
-**Forms are the thinnest coverage in this five.** Screen 4 has to absorb that load, so design it as a settings-style detail view with a real multi-field form, validation states, and a destructive confirm — not just Linear's property rail. If it doesn't, the form gap surfaces at Phase 5 instead.
+**Forms are split across two screens by modality, not concentrated on one.** *Revised 19 Aug 2026 after the P1.2 coverage audit, which found screen 4 carrying 40 components and 20 unique — 2.2× any other screen — and all 15 form components alone.* Screen 3 now carries the **create/edit drawer** (the full input surface, plus inline validation), and screen 4 carries the **settings modality** (settings rows, toggles, wizard, destructive confirm) alongside the detail rail. A create drawer and a settings page are different design problems, so this splits the work rather than duplicating it. See `spec/seed-screen-coverage.md`.
+
+**Screen 3 is anchored to ClickUp, not Peec.** Screens 2 and 3 previously shared an anchor and 9 non-chrome components. Table primitives that survive both Peec's restraint and ClickUp's density are primitives; primitives derived from Peec alone are Peec traced. **What is taken from ClickUp is interaction density and bulk-action behaviour — never colour.**
+
+**Screen 1 is anchored to Lindy, not Manus.** Manus 1.6 retreated from a three-region layout to two-region. Lindy, ChatGPT and Perplexity all still ship a right-hand pane. Recorded as a split field, not a settled pattern — see `spec/reference-rules.md`.
 
 **Nothing in this document is open.** Every prompt is complete.
 

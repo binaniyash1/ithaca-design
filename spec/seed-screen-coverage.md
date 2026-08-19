@@ -160,3 +160,98 @@ cleaner and it is what the component count actually argues for. It costs a week
 against the Phase 1 estimate. Splitting by modality is the recommendation only
 because it keeps the schedule and produces two genuinely different form designs
 instead of one big one.
+
+
+---
+
+# Decisions — 19 Aug 2026
+
+The audit above is the analysis. This is what was settled.
+
+## D1 — S4 splits by modality. Five screens, no sixth.
+
+**S3 gains a create/edit drawer** carrying the full input surface: drawer 69,
+form field wrapper 92, fieldset 93, text input 4, textarea 5, select 6, combobox
+7, multi-select with tokens 8, date range 13, file dropzone 14, inline
+validation.
+
+**S4 keeps the settings modality and the detail rail**: settings row 95, switch
+11, checkbox 9, radio group 10, slider 12, multi-step wizard 94, destructive
+confirm 68, property rail 45, metadata list 44, sub-item list 47, activity feed
+46, inline edit 40, comment composer.
+
+Projected effect: S4 drops from 40 components / 20 unique to roughly 28 / 11.
+
+## D2 — S3 re-anchors to ClickUp
+
+**Chosen: [ClickUp](https://mobbin.com/screens/e9639493-e0a6-46c9-93d1-d3189cbdc3c7).**
+Already in the reference set, held in reserve.
+
+**Why ClickUp over the alternatives:**
+
+- **Linear** already anchors S4. Using it twice gives the table primitives the
+  same design opinion twice, which is the exact problem the re-anchor exists to
+  solve.
+- **Lindy, Manus, Whop** are not table products. Nothing to extract.
+- **Firecrawl, Amie** are in reserve but thin here — neither ships a dense
+  working table with bulk actions.
+- **ClickUp ships every component S3 needs, verified:**
+  bulk-action bar with a live selection count and eight actions
+  ([e9639493](https://mobbin.com/screens/e9639493-e0a6-46c9-93d1-d3189cbdc3c7)) ·
+  create/edit modal with a progressive field surface
+  ([9c42143c](https://mobbin.com/screens/9c42143c-8a74-41b5-882a-985a641572e7)) ·
+  date picker in a popover with presets plus calendar
+  ([7adaedae](https://mobbin.com/screens/7adaedae-0166-41aa-a924-8f183b5b468a)) ·
+  label/value property grid
+  ([1c903fb6](https://mobbin.com/screens/1c903fb6-5c68-48ac-8a0f-08510bf4efa0)).
+
+**The stress test this buys.** ClickUp is aesthetically opposite to Peec —
+chromatic, loud, heavy with affordances, where Peec is restrained hairlines and
+semantic-only colour. Table primitives that hold up under both opinions are
+primitives, not Peec traced. That is the whole point of the re-anchor.
+
+**ClickUp also builds its create form differently from a static field stack:**
+fields appear as chips (`Assignee`, `Due date`, `Priority`, `Tags`) that expand
+into inputs on click. A second modality for the same job, which is worth
+knowing about before designing the drawer even if the answer is to reject it.
+
+**Guardrail — state it or it leaks.** ClickUp is louder and more chromatic than
+this system. **What is taken is interaction density and bulk-action behaviour.
+Not colour.** Reference → extracted rule → own component, as always. Any
+chromatic decision traceable to ClickUp is a bug.
+
+**This answers masterplan open question 2** for ClickUp: what is being taken is
+dense-table interaction under load. It earns its place in the reference set on
+that basis, and on no other.
+
+**Bonus finding:** ClickUp renders unset properties as **"Empty"** — a neutral
+placeholder, never an imperative verb. Independent support for **R1** from a
+product that is not Peec.
+
+## D3 — Coverage fixes
+
+- **#59 List item → S2**, via the top-domains list. Already present in the Peec
+  dashboard reference, so it costs nothing to add.
+- **#70 Popover → S3**, stated explicitly as the container for the column
+  visibility control (37). It was always implied; it is now written down.
+  ClickUp's date picker is a second instance on the same screen.
+
+## D4 — #33 Command palette: conscious P2 deferral
+
+**Deferred, deliberately, with the cost recorded.**
+
+S4 is anchored to Linear, and the command palette is the most Linear component
+there is — arguably the thing Linear is best known for. Omitting it from a
+Linear-anchored system is not an oversight and should not be discovered later as
+one.
+
+**Why defer:** it is P2, it forces no other component into existence, and it is a
+navigation surface rather than a display or data component — it would consume a
+seed-screen slot while adding one component.
+
+**What it costs:** the system will have no answer for keyboard-first navigation
+until it lands, and any designer who knows Linear will notice its absence
+immediately.
+
+**Revisit at:** Phase 6, alongside the app skill, where keyboard navigation
+becomes a real requirement rather than a nicety.

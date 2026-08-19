@@ -1,0 +1,16 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "ithaca-design",
+  "displayName": "Ithaca Design",
+  "version": "0.1.0",
+  "description": "Generates product screens from a canonical design system spec — tokens, component contracts, and a rules layer — instead of inventing generic UI.",
+  "author": {
+    "name": "Yash Binani",
+    "email": "binaniyash1@gmail.com",
+    "url": "https://github.com/binaniyash1"
+  },
+  "homepage": "https://ithaca-design.vercel.app",
+  "repository": "https://github.com/binaniyash1/ithaca-design",
+  "license": "UNLICENSED",
+  "keywords": ["design-system", "ui", "components", "figma", "tokens"]
+}

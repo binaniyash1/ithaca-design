@@ -1,0 +1,22 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
+  "name": "ithaca",
+  "owner": {
+    "name": "Yash Binani",
+    "email": "binaniyash1@gmail.com",
+    "url": "https://github.com/binaniyash1"
+  },
+  "description": "Design system plugins that generate on-system product screens from plain language.",
+  "plugins": [
+    {
+      "name": "ithaca-design",
+      "source": "./plugins/ithaca-design",
+      "description": "Generates product screens from a canonical design system spec — tokens, component contracts, and a rules layer — instead of inventing generic UI.",
+      "author": {
+        "name": "Yash Binani"
+      },
+      "category": "design",
+      "tags": ["design-system", "ui", "figma", "components"]
+    }
+  ]
+}

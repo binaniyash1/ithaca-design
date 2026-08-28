@@ -53,6 +53,10 @@ assert(frontmatter, "SKILL.md frontmatter is missing or malformed");
 assert(/^name:\s*agent\s*$/m.test(frontmatter[1]), "Skill name must be agent");
 assert(/^description:\s*\S+/m.test(frontmatter[1]), "Skill description is missing");
 assert(!skill.includes("[TODO:"), "Skill contains an unfinished TODO");
+assert(
+  skill.includes(`Using Ithaca Design v${claude.version}.`),
+  "Skill version announcement does not match plugin manifest",
+);
 
 const referenceLinks = [
   ...skill.matchAll(/\]\((references\/[^)]+\.md)\)/g),
@@ -64,6 +68,9 @@ for (const relativePath of new Set(referenceLinks)) {
 }
 
 await access(resolve(root, "tests/sample-prds/crm-today.md"));
+await access(
+  resolve(root, "tests/feedback-regressions/crm-today-round-1.md"),
+);
 
 console.log(
   `Ithaca ${codex.version} is valid for Claude Code and Codex (${referenceLinks.length} routed references).`,

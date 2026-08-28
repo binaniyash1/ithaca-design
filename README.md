@@ -52,10 +52,12 @@ an already-running task does not become a valid installation test.
 
 ## Current vertical slice
 
-Version 0.2 accepts a PRD, plans silently, implements the UI in the target
+Version 0.3 accepts a PRD, plans silently, implements the UI in the target
 repository, runs a preview, visually audits the result, fixes failures, and
 reports evidence. The first benchmark is `tests/sample-prds/crm-today.md`, a
 dense operational CRM queue with ambient and selected-record context states.
+Its first screenshot-feedback regression is captured in
+`tests/feedback-regressions/crm-today-round-1.md`.
 
 ## How releases work
 

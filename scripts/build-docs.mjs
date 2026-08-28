@@ -46,8 +46,18 @@ const updated = `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear
 // ---- 3. changelog ----
 const CHANGELOG = [
   {
-    version: '0.2.0',
+    version: '0.3.0',
     date: updated,
+    notes: [
+      'Adds stable queue-column, truncation, and full-row interaction rules.',
+      'Adds neutral hover, softer menu, complete pointer, and zero-jitter feedback contracts.',
+      'Adds a Hyper-inspired segmented pipeline chart recipe.',
+      'Adds the first screenshot-feedback regression checklist.',
+    ],
+  },
+  {
+    version: '0.2.0',
+    date: '28 Aug 2026',
     notes: [
       'Accepts a PRD without requiring a separate design brief.',
       'Implements product UI, runs a preview, and visually audits the result.',

@@ -50,7 +50,9 @@ immersive task.
 
 - Use at most two font weights on one screen.
 - Body text is left aligned.
-- Numeric values use the registered mono treatment or tabular numerals.
+- Numeric values, timestamps, currency, percentages, counts, and identifiers
+  use the registered mono treatment. Prefer Supply when it is available;
+  otherwise use a legible open-source monospace with tabular figures.
 - Labels stay quiet; values, current state, and the next action carry emphasis.
 - Do not use oversized marketing headings inside working product surfaces.
 
@@ -59,6 +61,9 @@ immersive task.
 - Use a consistent spacing scale; sibling cards and rows share padding.
 - Default meaningful card padding is 16px or 20px.
 - Align navigation and main-area headers on the same horizontal axis.
+- Keep the product/brand block in the navigation compact. It should establish
+  identity without becoming a second hero; normally keep it around 48–56px or
+  roughly 20% shorter than a conventional 64–72px app header.
 - Siblings in a comparison set keep identical width, padding, border, radius,
   and internal order. Emphasis changes colour or badge, not structure.
 - Reserve geometry for in-flow loading, validation, and hover actions so the
@@ -72,6 +77,13 @@ immersive task.
 - Empty values are neutral placeholders, never imperative verbs.
 - Icon-only controls require an accessible name and a visible tooltip; when
   comprehension matters, use a visible label.
+- Every interactive target uses the pointer cursor and has visible hover,
+  focus-visible, active, and disabled states.
+- Hover must preserve hierarchy. Secondary controls, tabs, row actions, and
+  neutral navigation use a very light neutral fill, not a brand-colour fill.
+- Success, undo, and progress feedback must overlay the layout or occupy
+  permanently reserved space. Never insert temporary chrome that shifts the
+  page vertically.
 
 ## Motion
 

@@ -8,6 +8,9 @@ description: Generate production-ready product UI from a PRD or plain-language r
 Build the requested interface in the user's existing repository. The normal
 input is a PRD; never require the user to translate it into design language.
 
+At the start of the first response, state: `Using Ithaca Design v0.3.0.` This
+makes stale plugin installations visible before work begins.
+
 ## Required workflow
 
 For every implementation request, read and follow
@@ -17,11 +20,15 @@ Then read:
 
 - [references/foundations.md](references/foundations.md) for the governing
   visual rules and density decision;
+- [references/interaction-controls.md](references/interaction-controls.md) for
+  selection, hover, menus, click targets, and feedback behavior;
 - [references/quality-gate.md](references/quality-gate.md) before claiming the
   work is complete;
 - [references/operational-workspace.md](references/operational-workspace.md)
   when the PRD describes a dashboard, CRM, queue, table, pipeline, orders,
   accounts, reports, settings, or another operational product surface.
+- [references/charts.md](references/charts.md) when the result contains charts,
+  progress indicators, pipeline summaries, or data visualisation.
 
 Do not load an unrelated surface reference merely because it exists.
 

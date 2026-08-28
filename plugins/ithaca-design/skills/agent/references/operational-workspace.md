@@ -27,6 +27,18 @@ settings, and similar internal or customer-facing operational products.
   selected count. It must not displace the queue.
 - Cards are permitted when spacious scanning is intentional, but use compact
   internal lanes so metadata, status, and action remain aligned.
+- When accordion groups represent distinct reasons for action, prefer separate
+  bordered group surfaces with a modest gap over one monolithic table. The
+  separation should improve scanning without turning the page into a card wall.
+- Expanded accordion content uses a real column grid. Define stable lanes for
+  identifier, description, source/status, age/value, hover actions, and primary
+  action; do not position each row's content independently.
+- Give text lanes explicit minimum and maximum widths and truncate long content
+  predictably. Equivalent values such as `2h`, `5h`, and `1d` share one aligned
+  column.
+- The entire accordion header is clickable. When an item row opens contextual
+  detail, the entire non-control portion of the row is clickable as one target;
+  nested buttons retain their own actions and must not trigger row selection.
 - Resting row actions are outlined/secondary; strengthen them on hover or focus.
   The page-level action remains the only filled primary action.
 
@@ -40,6 +52,11 @@ settings, and similar internal or customer-facing operational products.
   an overflow menu.
 - Design long labels, empty values, horizontal overflow, sticky headers,
   selection, inline editing, loading, and failed rows.
+- Use a pale full-row selection fill with sufficient contrast. Do not use a
+  decorative 1–3px brand-colour rail as the primary selection indicator; it is
+  visually noisy and reads as generic generated UI.
+- Reserve every column across all rows, including absent values and hover-only
+  controls, so content never drifts horizontally between records.
 
 ## Metrics and charts
 

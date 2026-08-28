@@ -17,6 +17,8 @@ Run this gate after rendering the result and before claiming completion.
 - Are spacing, padding, radius, borders, and actions consistent among siblings?
 - Do numeric values use mono or tabular treatment?
 - Are there no shadows in high-density mode?
+- Is the navigation brand block compact rather than vertically dominant?
+- Do comparable row values occupy stable columns with predictable truncation?
 
 ## States and content
 
@@ -24,6 +26,8 @@ Run this gate after rendering the result and before claiming completion.
 - Are first-run, filtered-empty, all-clear, and error states distinct?
 - Does realistic content stress long names, values, labels, and metadata?
 - Do loading and validation changes avoid layout shift?
+- Do success notices, undo affordances, and background progress avoid moving
+  the primary work surface?
 
 ## Interaction and accessibility
 
@@ -32,6 +36,14 @@ Run this gate after rendering the result and before claiming completion.
 - Are touch targets adequate where touch input applies?
 - Does reduced motion preserve the final result and information?
 - Are inline and destructive actions explicit and recoverable where possible?
+- Does every clickable element expose a pointer cursor and non-layout-shifting
+  hover/focus state?
+- Do secondary controls hover neutrally instead of turning into filled primary
+  actions?
+- Are row and accordion hit areas complete without stealing events from nested
+  buttons?
+- Do menus and selects use the same quiet border family as buttons and a
+  visibly softer radius than compact row controls?
 
 ## Responsive
 

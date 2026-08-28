@@ -1,0 +1,20 @@
+{
+  "name": "ithaca",
+  "interface": {
+    "displayName": "Ithaca Design"
+  },
+  "plugins": [
+    {
+      "name": "ithaca-design",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ithaca-design"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

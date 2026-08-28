@@ -1,0 +1,83 @@
+# Operational workspace
+
+Use this reference for CRM, dashboard, queue, table, orders, accounts, reports,
+settings, and similar internal or customer-facing operational products.
+
+## Composition
+
+- Use high-density mode.
+- The page answers one operational question. Put context and controls in the
+  header, then the working surface—not a decorative hero.
+- Prefer one continuous work surface with internal grouping over a wall of
+  disconnected cards.
+- Use a soft neutral canvas and white only for the focal working region or a
+  real decision unit.
+- When a contextual right slot exists, keep its width and location stable. An
+  ambient state and a selected-record state occupy the same slot; do not cover
+  the table with an overlay.
+- Never exceed three simultaneous panes.
+
+## Queues
+
+- A queue is for resolution, not browsing. Every row has one dominant verb.
+- Group rows by the reason they require attention, not by object type alone.
+- A successful row action resolves in place and leaves the queue when the PRD
+  says the work is complete.
+- Bulk action belongs at group level or in an overlay toolbar with a live
+  selected count. It must not displace the queue.
+- Cards are permitted when spacious scanning is intentional, but use compact
+  internal lanes so metadata, status, and action remain aligned.
+- Resting row actions are outlined/secondary; strengthen them on hover or focus.
+  The page-level action remains the only filled primary action.
+
+## Tables
+
+- Use consistent cell padding and column alignment.
+- Keep selection, status, owner, numeric value, time, and row actions in stable
+  columns.
+- Primary identifiers are strongest; metadata and timestamps are quiet.
+- Keep important row actions reachable. Do not hide the only useful action in
+  an overflow menu.
+- Design long labels, empty values, horizontal overflow, sticky headers,
+  selection, inline editing, loading, and failed rows.
+
+## Metrics and charts
+
+- A stat band may be more appropriate than four independent cards when the
+  values describe one shared situation.
+- Charts are dense and deliberately bounded; do not spread sparse data across
+  the viewport for drama.
+- Use modern restrained gradients inside marks only when they aid grouping or
+  focus.
+- Use a dark tooltip on a light interface.
+- Put legends in a separated footer or a stable side region when space allows.
+- Put contextual numbers near the chart but do not repeat the same metric in
+  several competing cards.
+
+## Contextual peek
+
+- Peek handles the common task: understand context, change status/owner, log an
+  action, or inspect a small trail.
+- Full record handles history, related objects, notes, people, and uncommon
+  edits.
+- Every peek exposes exactly one `Open full record` escalation.
+- Selection swaps ambient context for record context without moving the main
+  work surface.
+
+## Required state families
+
+Choose only those relevant to the PRD, but never omit a named state:
+
+- full/default data;
+- partially completed or updated;
+- all clear / zero work;
+- first-run / no data;
+- filtered to nothing;
+- loading and progressive work;
+- failure and partial failure;
+- unowned or unassigned;
+- disabled or permission-limited;
+- long content and narrow viewport.
+
+First-run, filtered-empty, and failed-to-load are different components. Do not
+reuse setup copy for a successful empty queue or a network failure.

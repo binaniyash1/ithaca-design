@@ -269,21 +269,23 @@ need to restart.</pre>
       <button class="copy" type="button">Copy</button>
 <pre>design me a settings page</pre>
     </div>
-    <p>The reply must open with this line, word for word:</p>
+    <p>The agent must do all of the following:</p>
     <div class="expect">
-      <pre>{{ANNOUNCE}}</pre>
+      <pre>inspect the target repository
+implement working UI
+run a preview
+visually audit the rendered result</pre>
     </div>
     <p>Read the result like this:</p>
     <ul>
-      <li><strong>Line is there, version matches above</strong> — working, and current.</li>
-      <li><strong>Line is missing entirely</strong> — the plugin did not load. You almost certainly did not restart.</li>
-      <li><strong>Line is there but the version is older than <strong>{{VERSION}}</strong></strong> — your install is stale. Auto-update is off, or has not run yet.</li>
+      <li><strong>It builds and visually verifies the page</strong> — working.</li>
+      <li><strong>It returns only a brief or wireframe</strong> — the workflow failed.</li>
+      <li><strong>It claims visual quality without running a preview</strong> — the quality gate failed.</li>
     </ul>
     <p class="step-note">
-      At version {{VERSION}} the skill is a canary: it announces itself, tells
-      you the design system is not authored yet, and asks what you were trying to
-      build. It cannot generate a screen, and it will refuse rather than improvise
-      one. That refusal is the feature.
+      Version {{VERSION}} is the first working vertical slice. It supports dense
+      operational product surfaces and is being tested first against a CRM Today
+      queue before the remaining archetypes are added.
     </p>
   </section>
 
@@ -295,8 +297,7 @@ need to restart.</pre>
   <footer>
     <p>
       Ithaca Design — version {{VERSION}}, updated {{UPDATED}}.
-      Version and verification line on this page are generated from the plugin
-      manifest, so they cannot drift from what ships.
+      Version and changelog on this page are generated from the host manifests.
     </p>
   </footer>
 

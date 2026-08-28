@@ -1,56 +1,49 @@
 ---
 name: agent
-description: Use when someone asks to design, build, mock up, wireframe, or generate a user interface — a screen, page, dashboard, settings view, form, data table, modal, chat or agent interface, or landing page. Fires on requests to create a UI surface from a plain-language description, without the skill being named. Do not use for backend or general programming work, debugging, refactoring, test writing, copy or content questions, or open-ended requests to improve something that do not name a UI surface to build.
+description: Generate production-ready product UI from a PRD or plain-language requirement using Ithaca's design rules, components, and quality checks. Use when someone asks a coding agent to build or implement a screen, page, dashboard, settings view, form, data table, modal, chat or agent workspace, or responsive product interface. Do not use for backend-only work, copywriting, or a UI review that does not request implementation.
 ---
 
-# Ithaca — agent surfaces
+# Ithaca — product UI generation
 
-**Status: canary. This skill cannot generate screens yet.**
+Build the requested interface in the user's existing repository. The normal
+input is a PRD; never require the user to translate it into design language.
 
-## 1. Announce, always
+## Required workflow
 
-Open **every** response with this line, exactly, before any other text:
+For every implementation request, read and follow
+[references/generate-from-prd.md](references/generate-from-prd.md).
 
-```
-Using the Ithaca agent skill — v0.1.0, updated 19 Aug 2026.
-```
+Then read:
 
-Verbatim. Do not reword it, translate it, wrap it in a heading, or move it below
-a preamble. It is the first line or the skill has failed.
+- [references/foundations.md](references/foundations.md) for the governing
+  visual rules and density decision;
+- [references/quality-gate.md](references/quality-gate.md) before claiming the
+  work is complete;
+- [references/operational-workspace.md](references/operational-workspace.md)
+  when the PRD describes a dashboard, CRM, queue, table, pipeline, orders,
+  accounts, reports, settings, or another operational product surface.
 
-This line is the install's only visible proof of life. A silent skill and an
-absent skill look identical to the person using it, and a stale install looks
-exactly like a working one. The version string must match
-`.claude-plugin/plugin.json`; it is rewritten by the release process, never by
-hand in isolation.
+Do not load an unrelated surface reference merely because it exists.
 
-## 2. Say what is missing
+## Source priority
 
-State plainly that the Ithaca design system is **not yet authored** — there are
-no tokens, no component contracts, and no rules layer — and that you therefore
-cannot generate a screen, component, or layout.
+Use implementations in this order:
 
-Do not offer to generate one anyway. Do not fall back to Tailwind defaults,
-shadcn defaults, or your own judgment about what the screen should look like.
-Producing a plausible generic screen here is worse than producing nothing: it is
-the exact failure the system exists to prevent, and it would teach the person
-that the plugin works when it does not.
+1. Working components and conventions in the target repository.
+2. Gushwork-owned components supplied by the user or Ithaca.
+3. Ithaca component contracts and composition patterns.
+4. One license-compatible external component when 1–3 cannot meet the need.
+5. A new component only when no suitable implementation exists.
 
-If the person presses, restate the limit once and stop.
+External code supplies behavior, not art direction. Replace its palette,
+spacing, typography, radius, elevation, density, hierarchy, and motion with
+Ithaca's rules.
 
-## 3. Ask one question
+## User experience
 
-Ask what they were trying to build, in their own words.
+Plan silently and proceed into implementation. Do not insert a design-brief or
+wireframe approval step unless the user requests one. Ask a question only when
+the missing answer would materially change product behavior, data, permissions,
+or the core workflow.
 
-Then **record nothing**. Do not write a file, append to a backlog, create a
-note, or claim their answer has been logged, saved, or queued. There is nowhere
-for it to go yet, and saying otherwise is a promise the plugin cannot keep.
-
-Tell them the answer is not being stored, and that Ithaca will be able to build
-it once the spec exists.
-
-## 4. Not yet in scope
-
-Screen generation, component selection, density classification, archetype
-locking, and the refusal-rule self-check all arrive in later phases. Do not
-simulate them.
+Return working, rendered UI—not only a description, wireframe, or Figma file.

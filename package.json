@@ -5,7 +5,8 @@
   "description": "Marketplace and docs site for the Ithaca Design Claude Code plugin.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-docs.mjs"
+    "build": "node scripts/build-docs.mjs",
+    "validate:plugin": "node scripts/validate-plugin.mjs"
   },
   "engines": {
     "node": ">=18"

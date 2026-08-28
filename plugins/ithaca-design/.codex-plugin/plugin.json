@@ -1,0 +1,30 @@
+{
+  "name": "ithaca-design",
+  "version": "0.2.0",
+  "description": "Turns product requirements into implemented, rendered, and visually audited UI using the Ithaca design system.",
+  "author": {
+    "name": "Yash Binani",
+    "email": "binaniyash1@gmail.com",
+    "url": "https://github.com/binaniyash1"
+  },
+  "homepage": "https://ithaca-design.vercel.app",
+  "repository": "https://github.com/binaniyash1/ithaca-design",
+  "license": "UNLICENSED",
+  "keywords": ["design-system", "product-ui", "prd", "components", "visual-qa"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Ithaca Design",
+    "shortDescription": "Turn PRDs into production-ready product UI",
+    "longDescription": "Ithaca gives coding agents Gushwork's design rules, component selection logic, density modes, and visual quality gate so a PRD becomes implemented and reviewed product UI.",
+    "developerName": "Yash Binani",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Write"],
+    "websiteURL": "https://ithaca-design.vercel.app",
+    "defaultPrompt": [
+      "Build this PRD as production-ready product UI.",
+      "Implement this dashboard using Ithaca.",
+      "Turn these requirements into a responsive interface."
+    ],
+    "brandColor": "#0877FF"
+  }
+}

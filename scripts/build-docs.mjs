@@ -46,8 +46,18 @@ const updated = `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear
 // ---- 3. changelog ----
 const CHANGELOG = [
   {
-    version: '0.4.0',
+    version: '0.5.0',
     date: updated,
+    notes: [
+      'Packages Ithaca as a portable Agent Skill with one canonical source.',
+      'Generates identical Claude Code and Codex plugin skill copies automatically.',
+      'Keeps the existing /ithaca-design:agent command as a compatibility alias.',
+      'Blocks validation and deployment when a generated host copy drifts.',
+    ],
+  },
+  {
+    version: '0.4.0',
+    date: '31 Aug 2026',
     notes: [
       'Adds verified conditional rules from the field-service comparison.',
       'Separates work groups structurally while keeping repeated rows compact.',

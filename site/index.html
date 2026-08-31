@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ithaca Design — install</title>
-<meta name="description" content="Install Ithaca Design, a Claude Code plugin that generates product screens from a canonical design system.">
+<meta name="description" content="Install Ithaca Design, a portable Agent Skill and plugin that generates product screens from a canonical design system.">
 <meta name="robots" content="noindex">
 <style>
   /* Light mode only. No dark-mode styles by design — v1 is single-theme. */
@@ -175,7 +175,7 @@
 <div class="page">
 
   <header>
-    <p class="eyebrow">Claude Code plugin</p>
+    <p class="eyebrow">Portable Agent Skill + plugin</p>
     <h1>Ithaca Design</h1>
     <p class="lede">
       Describe a feature in plain language and get a screen built from real
@@ -214,6 +214,21 @@
       <li>Select <strong>ithaca</strong></li>
       <li>Choose <strong>Enable auto-update</strong></li>
     </ol>
+  </section>
+
+  <section>
+    <h2>Use it as a portable skill</h2>
+    <p>
+      In an app that supports Agent Skills, install or link the
+      <code class="inline">skills/ithaca-design</code> folder from the same
+      repository. This is the canonical Ithaca package; Claude Code and Codex
+      receive generated copies of the exact same rules.
+    </p>
+    <p class="step-note">
+      Existing Claude prompts using <code class="inline">/ithaca-design:agent</code>
+      remain compatible. New skill-native apps can invoke
+      <code class="inline">ithaca-design</code> directly.
+    </p>
   </section>
 
   <section>

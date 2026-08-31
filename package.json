@@ -2,10 +2,13 @@
   "//": "No version field here on purpose. The only version in this repo is in plugins/ithaca-design/.claude-plugin/plugin.json.",
   "name": "ithaca-design",
   "private": true,
-  "description": "Marketplace and docs site for the Ithaca Design Claude Code plugin.",
+  "description": "Portable Ithaca Design skill and its Claude Code and Codex plugin adapters.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-docs.mjs",
+    "sync:skill": "node scripts/sync-skill.mjs",
+    "check:skill-sync": "node scripts/sync-skill.mjs --check",
+    "build:docs": "node scripts/build-docs.mjs",
+    "build": "npm run check:skill-sync && npm run validate:plugin && npm run build:docs",
     "validate:plugin": "node scripts/validate-plugin.mjs"
   },
   "engines": {

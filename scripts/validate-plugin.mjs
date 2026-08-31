@@ -1,4 +1,5 @@
 import { readFile, access } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -46,11 +47,19 @@ assert(
   "Codex marketplace source path is incorrect",
 );
 
-const skillPath = resolve(pluginRoot, "skills/agent/SKILL.md");
+execFileSync(process.execPath, [resolve(root, "scripts/sync-skill.mjs"), "--check"], {
+  cwd: root,
+  stdio: "inherit",
+});
+
+const skillPath = resolve(root, "skills/ithaca-design/SKILL.md");
 const skill = await readFile(skillPath, "utf8");
 const frontmatter = skill.match(/^---\n([\s\S]*?)\n---/);
 assert(frontmatter, "SKILL.md frontmatter is missing or malformed");
-assert(/^name:\s*agent\s*$/m.test(frontmatter[1]), "Skill name must be agent");
+assert(
+  /^name:\s*ithaca-design\s*$/m.test(frontmatter[1]),
+  "Portable skill name must be ithaca-design",
+);
 assert(/^description:\s*\S+/m.test(frontmatter[1]), "Skill description is missing");
 assert(!skill.includes("[TODO:"), "Skill contains an unfinished TODO");
 assert(
@@ -67,6 +76,19 @@ for (const relativePath of new Set(referenceLinks)) {
   await access(resolve(dirname(skillPath), relativePath));
 }
 
+const generatedSkill = await readFile(
+  resolve(pluginRoot, "skills/ithaca-design/SKILL.md"),
+  "utf8",
+);
+assert(generatedSkill === skill, "Generated plugin skill differs from portable source");
+
+const alias = await readFile(resolve(pluginRoot, "skills/agent/SKILL.md"), "utf8");
+assert(/^name:\s*agent\s*$/m.test(alias), "Compatibility alias name must be agent");
+assert(
+  alias.includes("../ithaca-design/SKILL.md"),
+  "Compatibility alias must route to the canonical plugin skill",
+);
+
 await access(resolve(root, "tests/sample-prds/crm-today.md"));
 await access(
   resolve(root, "tests/feedback-regressions/crm-today-round-1.md"),
@@ -76,5 +98,5 @@ await access(
 );
 
 console.log(
-  `Ithaca ${codex.version} is valid for Claude Code and Codex (${referenceLinks.length} routed references).`,
+  `Ithaca ${codex.version} is valid as a portable skill and for Claude Code and Codex (${referenceLinks.length} routed references).`,
 );

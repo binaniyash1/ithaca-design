@@ -19,6 +19,10 @@ Run this gate after rendering the result and before claiming completion.
 - Are there no shadows in high-density mode?
 - Is the navigation brand block compact rather than vertically dominant?
 - Do comparable row values occupy stable columns with predictable truncation?
+- Does every large white work surface have enough internal grouping and schema
+  clarity to avoid becoming an overwhelming undifferentiated container?
+- When metrics use cards, are their surface, padding, geometry, mono values,
+  labels, and semantic support consistently constructed regardless of count?
 
 ## States and content
 
@@ -44,6 +48,10 @@ Run this gate after rendering the result and before claiming completion.
   buttons?
 - Do menus and selects use the same quiet border family as buttons and a
   visibly softer radius than compact row controls?
+- If a contextual pane depends on selection, is it closed before selection and
+  opened by the object that causes it?
+- When repeated rows contain many different variables, are their meanings made
+  explicit with column labels or another clear reading aid?
 
 ## Responsive
 

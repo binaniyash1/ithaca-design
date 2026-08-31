@@ -71,6 +71,9 @@ await access(resolve(root, "tests/sample-prds/crm-today.md"));
 await access(
   resolve(root, "tests/feedback-regressions/crm-today-round-1.md"),
 );
+await access(
+  resolve(root, "tests/feedback-regressions/field-service-round-1.md"),
+);
 
 console.log(
   `Ithaca ${codex.version} is valid for Claude Code and Codex (${referenceLinks.length} routed references).`,

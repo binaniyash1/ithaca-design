@@ -42,6 +42,10 @@ immersive task.
 - Filled primary buttons have no shadow.
 - White secondary controls use a neutral border and subtle `shadow-sm` only in
   low-density mode; high-density controls use borders without shadow.
+- When metrics are expressed as separate cards, keep the cards white with a
+  quiet neutral border, consistent 16px or 20px padding, matched radius, a
+  subdued label, a clearly differentiated mono value, and restrained semantic
+  support. The number of cards follows the product need, not a visual quota.
 - Saturated chart colours belong to data encoding, not surrounding chrome.
 - Overdue may be the strongest status emphasis in an operational product, but
   structure and legibility still outrank saturation.
@@ -66,6 +70,9 @@ immersive task.
   roughly 20% shorter than a conventional 64–72px app header.
 - Siblings in a comparison set keep identical width, padding, border, radius,
   and internal order. Emphasis changes colour or badge, not structure.
+- A white focal surface still needs explicit internal hierarchy. Use grouping,
+  headings, aligned lanes, and semantic spacing so the surface does not become
+  an undifferentiated white container.
 - Reserve geometry for in-flow loading, validation, and hover actions so the
   interface does not jump.
 

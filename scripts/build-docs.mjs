@@ -46,8 +46,19 @@ const updated = `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear
 // ---- 3. changelog ----
 const CHANGELOG = [
   {
-    version: '0.3.0',
+    version: '0.4.0',
     date: updated,
+    notes: [
+      'Adds verified conditional rules from the field-service comparison.',
+      'Separates work groups structurally while keeping repeated rows compact.',
+      'Makes dense row schemas explicit only when their variable count requires it.',
+      'Makes selection-dependent context panes closed by default and causally opened.',
+      'Defines metric-card craft without prescribing a fixed metric count.',
+    ],
+  },
+  {
+    version: '0.3.0',
+    date: '28 Aug 2026',
     notes: [
       'Adds stable queue-column, truncation, and full-row interaction rules.',
       'Adds neutral hover, softer menu, complete pointer, and zero-jitter feedback contracts.',

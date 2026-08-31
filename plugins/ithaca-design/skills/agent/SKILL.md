@@ -8,7 +8,7 @@ description: Generate production-ready product UI from a PRD or plain-language r
 Build the requested interface in the user's existing repository. The normal
 input is a PRD; never require the user to translate it into design language.
 
-At the start of the first response, state: `Using Ithaca Design v0.3.0.` This
+At the start of the first response, state: `Using Ithaca Design v0.4.0.` This
 makes stale plugin installations visible before work begins.
 
 ## Required workflow

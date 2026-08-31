@@ -12,9 +12,12 @@ settings, and similar internal or customer-facing operational products.
   disconnected cards.
 - Use a soft neutral canvas and white only for the focal working region or a
   real decision unit.
-- When a contextual right slot exists, keep its width and location stable. An
-  ambient state and a selected-record state occupy the same slot; do not cover
-  the table with an overlay.
+- Choose the contextual-region activation from the job. When context is
+  selection-dependent, start with the region closed and open it from the row or
+  object that caused it. Use an ambient region before selection only when its
+  information materially changes pre-selection decisions. Once open, keep its
+  width and location stable while selection changes; do not cover the primary
+  work surface with an unrelated overlay.
 - Never exceed three simultaneous panes.
 
 ## Queues
@@ -30,6 +33,9 @@ settings, and similar internal or customer-facing operational products.
 - When accordion groups represent distinct reasons for action, prefer separate
   bordered group surfaces with a modest gap over one monolithic table. The
   separation should improve scanning without turning the page into a card wall.
+- When several comparable work groups coexist, use hierarchical density:
+  meaningful space between groups and compact, regular repetition within each
+  group. Do not impose this rhythm on an ungrouped surface.
 - Expanded accordion content uses a real column grid. Define stable lanes for
   identifier, description, source/status, age/value, hover actions, and primary
   action; do not position each row's content independently.
@@ -57,11 +63,17 @@ settings, and similar internal or customer-facing operational products.
   visually noisy and reads as generic generated UI.
 - Reserve every column across all rows, including absent values and hover-only
   controls, so content never drifts horizontally between records.
+- When a repeated row carries many heterogeneous variables, add visible column
+  labels or an equally explicit reading aid. Simple rows with self-evident
+  content do not require a header merely to resemble a table.
 
 ## Metrics and charts
 
 - A stat band may be more appropriate than four independent cards when the
   values describe one shared situation.
+- Separate metric cards are equally valid when their hierarchy and styling
+  benefit comprehension. Do not choose a fixed card count; judge consistent
+  geometry, padding, mono values, label contrast, and semantic support.
 - Charts are dense and deliberately bounded; do not spread sparse data across
   the viewport for drama.
 - Use modern restrained gradients inside marks only when they aid grouping or
@@ -78,8 +90,10 @@ settings, and similar internal or customer-facing operational products.
 - Full record handles history, related objects, notes, people, and uncommon
   edits.
 - Every peek exposes exactly one `Open full record` escalation.
-- Selection swaps ambient context for record context without moving the main
-  work surface.
+- When the pane is selection-triggered, it begins closed and opens as a direct
+  consequence of selecting the record. Do not populate it with ambient filler.
+- When ambient context is genuinely useful before selection, selection may swap
+  ambient context for record context without moving the main work surface.
 
 ## Required state families
 

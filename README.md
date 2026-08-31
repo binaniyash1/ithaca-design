@@ -18,6 +18,7 @@ marketplaces that distribute it.
 .claude-plugin/marketplace.json     the catalog — marketplace name "ithaca"
 .agents/plugins/marketplace.json    Codex marketplace — same name and plugin
 skills/ithaca-design/               canonical portable Agent Skill — edit here
+Ithaca-Design-Skill.md              self-contained file for forwarding/upload
 plugins/ithaca-design/              the plugin itself
   .claude-plugin/plugin.json        Claude Code manifest
   .codex-plugin/plugin.json         Codex manifest for the same release
@@ -61,6 +62,11 @@ or Codex manifests.
 
 The Claude plugin still accepts `/ithaca-design:agent` for compatibility. New
 hosts should use the portable `ithaca-design` skill directly.
+
+For a person who needs one file rather than a Git repository, send
+`Ithaca-Design-Skill.md`. It contains the entrypoint and every Ithaca rule
+in one self-contained Markdown file. Regenerate it with
+`npm run build:standalone`; release validation fails if it becomes stale.
 
 ## Current vertical slice
 

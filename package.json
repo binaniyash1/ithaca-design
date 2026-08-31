@@ -7,8 +7,10 @@
   "scripts": {
     "sync:skill": "node scripts/sync-skill.mjs",
     "check:skill-sync": "node scripts/sync-skill.mjs --check",
+    "build:standalone": "node scripts/build-standalone-skill.mjs",
+    "check:standalone": "node scripts/build-standalone-skill.mjs --check",
     "build:docs": "node scripts/build-docs.mjs",
-    "build": "npm run check:skill-sync && npm run validate:plugin && npm run build:docs",
+    "build": "npm run check:skill-sync && npm run check:standalone && npm run validate:plugin && npm run build:docs",
     "validate:plugin": "node scripts/validate-plugin.mjs"
   },
   "engines": {

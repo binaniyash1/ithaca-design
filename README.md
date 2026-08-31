@@ -70,7 +70,7 @@ in one self-contained Markdown file. Regenerate it with
 
 ## Current vertical slice
 
-Version 0.5 accepts a PRD, plans silently, implements the UI in the target
+Version 0.6 accepts a PRD, runs a bounded high-value discovery gate, implements the UI in the target
 repository, runs a preview, visually audits the result, fixes failures, and
 reports evidence. The first benchmark is `tests/sample-prds/crm-today.md`, a
 dense operational CRM queue with ambient and selected-record context states.

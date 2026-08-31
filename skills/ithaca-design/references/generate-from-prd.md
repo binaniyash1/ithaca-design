@@ -8,9 +8,9 @@ requirement and expects working UI.
 The normal input is the PRD. Do not require a separate design brief,
 wireframe, component list, or visual specification.
 
-Do not stop for approval after planning. Ask a question only when a missing
-answer would materially change the product, data model, permissions, or core
-workflow. Infer ordinary visual decisions from Ithaca.
+Do not stop for approval after planning. Apply the routed discovery gate after
+reading the supplied context and repository. Infer ordinary visual decisions
+from Ithaca.
 
 ## Internal workflow
 
@@ -19,17 +19,20 @@ workflow. Infer ordinary visual decisions from Ithaca.
 2. Inspect the target repository before choosing an implementation. Identify
    its framework, routes, existing components, tokens, dependencies, and local
    conventions. Preserve working functionality.
-3. Classify the requested surface and density. Choose one clear focal region,
+3. Run high-value discovery. If no consequential ambiguity remains, ask no
+   questions. Otherwise ask one compact, prioritised batch within the question
+   budget, then proceed when required blockers are resolved.
+4. Classify the requested surface and density. Choose one clear focal region,
    then select existing project or Gushwork components before considering an
    external source.
-4. Build production UI in the target repository. Include realistic content and
+5. Build production UI in the target repository. Include realistic content and
    every state needed to understand and operate the feature.
-5. Run the relevant checks and start a preview. Capture the rendered result at
+6. Run the relevant checks and start a preview. Capture the rendered result at
    the required responsive sizes.
-6. Critique the rendered UI against Ithaca's rules and the PRD. Correct visual
+7. Critique the rendered UI against Ithaca's rules and the PRD. Correct visual
    hierarchy, density, spacing, overflow, state, accessibility, and responsive
    failures before returning it.
-7. Report what was built, important assumptions, verification performed, and
+8. Report what was built, important assumptions, verification performed, and
    any unresolved product risk. Do not make the user read the internal design
    brief unless they ask for it.
 

@@ -8,13 +8,18 @@ description: Generate production-ready product UI from a PRD or plain-language r
 Build the requested interface in the user's existing repository. The normal
 input is a PRD; never require the user to translate it into design language.
 
-At the start of the first response, state: `Using Ithaca Design v0.5.0.` This
+At the start of the first response, state: `Using Ithaca Design v0.6.0.` This
 makes stale skill or plugin installations visible before work begins.
 
 ## Required workflow
 
 For every implementation request, read and follow
 [references/generate-from-prd.md](references/generate-from-prd.md).
+
+Before implementation, apply
+[references/discovery.md](references/discovery.md) to determine whether any
+high-value product questions remain after reading the prompt, attachments, and
+repository. Questions are conditional, not a mandatory intake form.
 
 Then read:
 
@@ -48,9 +53,8 @@ Ithaca's rules.
 
 ## User experience
 
-Plan silently and proceed into implementation. Do not insert a design-brief or
-wireframe approval step unless the user requests one. Ask a question only when
-the missing answer would materially change product behavior, data, permissions,
-or the core workflow.
+Plan silently and proceed into implementation after the discovery gate. Do not
+insert a design-brief or wireframe approval step unless the user requests one.
+Do not ask the user to make ordinary visual decisions Ithaca owns.
 
 Return working, rendered UI—not only a description, wireframe, or Figma file.

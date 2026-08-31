@@ -12,6 +12,7 @@ const checkOnly = process.argv.includes("--check");
 
 const references = [
   ["generate-from-prd.md", "Generate product UI from a PRD"],
+  ["discovery.md", "High-value discovery"],
   ["foundations.md", "Ithaca foundations"],
   ["interaction-controls.md", "Interaction and controls"],
   ["quality-gate.md", "Quality gate"],

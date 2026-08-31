@@ -2,7 +2,7 @@
   "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
   "name": "ithaca-design",
   "displayName": "Ithaca Design",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Turns product requirements into implemented, rendered, and visually audited UI using the Ithaca design system.",
   "author": {
     "name": "Yash Binani",

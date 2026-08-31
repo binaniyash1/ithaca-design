@@ -46,8 +46,19 @@ const updated = `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear
 // ---- 3. changelog ----
 const CHANGELOG = [
   {
-    version: '0.5.0',
+    version: '0.6.0',
     date: updated,
+    notes: [
+      'Adds context-aware product discovery before implementation.',
+      'Asks zero questions when the prompt, attachments, and repository are sufficient.',
+      'Prefers 3–7 high-impact questions with a hard maximum of 10 per request.',
+      'Lets users skip enhancement questions while preserving true blocker checks.',
+      'Keeps visual implementation decisions inside Ithaca rather than asking the user.',
+    ],
+  },
+  {
+    version: '0.5.0',
+    date: '31 Aug 2026',
     notes: [
       'Packages Ithaca as a portable Agent Skill with one canonical source.',
       'Generates identical Claude Code and Codex plugin skill copies automatically.',

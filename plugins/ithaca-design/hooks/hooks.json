@@ -1,0 +1,21 @@
+{
+  "$comment": [
+    "Claude Code hooks for Ithaca Design. Runs on someone else's machine.",
+    "SessionStart only — never block; always exit 0; silence when current.",
+    "timeout 10: must not slow session start."
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}\"/scripts/check-update.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,8 +1,6 @@
 #!/usr/bin/env node
-// Generates docs/index.html from site/index.html.
-//
-// Nothing about the version is authored in the template. Both host manifests
-// must agree or the build fails.
+// Generates docs/index.html and docs/version.json from site/index.html.
+// Host manifests must agree or the build fails.
 
 import { readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -12,12 +10,13 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const MANIFEST = join(root, 'plugins/ithaca-design/.claude-plugin/plugin.json');
 const CODEX_MANIFEST = join(root, 'plugins/ithaca-design/.codex-plugin/plugin.json');
+const SKILL = join(root, 'skills/ithaca-design/SKILL.md');
 const TEMPLATE = join(root, 'site/index.html');
 const OUT = join(root, 'docs/index.html');
+const VERSION_OUT = join(root, 'docs/version.json');
 
 const fail = (msg) => { console.error(`\n  BUILD FAILED\n  ${msg}\n`); process.exit(1); };
 
-// ---- 1. version, equal across host manifests ----
 const manifest = JSON.parse(readFileSync(MANIFEST, 'utf8'));
 const codexManifest = JSON.parse(readFileSync(CODEX_MANIFEST, 'utf8'));
 const version = manifest.version;
@@ -30,24 +29,45 @@ if (codexManifest.version !== version) {
   );
 }
 
-// ---- 2. last-updated: when the manifest last actually changed ----
+const skill = readFileSync(SKILL, 'utf8');
+const announceMatch = skill.match(/Using Ithaca Design v\d+\.\d+\.\d+\./);
+if (!announceMatch) fail(`Could not find "Using Ithaca Design vX.Y.Z." in ${SKILL}.`);
+const announce = announceMatch[0].replace(/\.$/, '');
+const announced = announce.match(/v(\d+\.\d+\.\d+)/)?.[1];
+if (announced !== version) {
+  fail(
+    `Version mismatch — refusing to publish.\n` +
+    `    plugin.json announces : ${version}\n` +
+    `    SKILL.md announces    : ${announced ?? '(none found)'}`
+  );
+}
+
 let updatedISO;
 try {
   const out = execFileSync('git', ['log', '-1', '--format=%cI', '--', MANIFEST],
     { cwd: root, encoding: 'utf8' }).trim();
   if (out) updatedISO = out;
-} catch { /* shallow clone or no git — fall through */ }
-if (!updatedISO) updatedISO = statSync(MANIFEST).mtime.toISOString();
+} catch { /* ignore */ }
+if (!updatedISO) updatedISO = new Date().toISOString();
 
 const d = new Date(updatedISO);
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const updated = `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
 
-// ---- 3. changelog ----
 const CHANGELOG = [
   {
+    version: '0.7.0',
+    date: '3 Sep 2026',
+    notes: [
+      'Gushwork-style one-line install.sh with auto-update enabled.',
+      'Portable install-skills.sh for Cursor, Codex, and other Agent Skills hosts.',
+      'SessionStart freshness check against hosted version.json.',
+      'Install page covers verify, stay-current, and other-agent paths.',
+    ],
+  },
+  {
     version: '0.6.0',
-    date: updated,
+    date: '3 Sep 2026',
     notes: [
       'Adds context-aware product discovery before implementation.',
       'Asks zero questions when the prompt, attachments, and repository are sufficient.',
@@ -107,12 +127,13 @@ const changelogHTML = CHANGELOG.map((r) => `<div class="release">
         <ul>${r.notes.map((n) => `<li>${escape(n)}</li>`).join('')}</ul>
       </div>`).join('\n');
 
-// ---- 4. render ----
 const template = readFileSync(TEMPLATE, 'utf8');
 const values = {
   VERSION: escape(version),
   UPDATED: escape(updated),
+  ANNOUNCE: escape(announce),
   CHANGELOG: changelogHTML,
+  REPO: 'binaniyash1/ithaca-design',
 };
 
 let html = template;
@@ -125,8 +146,16 @@ if (leftover) fail(`Unsubstituted placeholders in template: ${[...new Set(leftov
 
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, html);
+writeFileSync(VERSION_OUT, JSON.stringify({
+  version,
+  updated: updatedISO,
+  announce,
+  plugin: 'ithaca-design@ithaca',
+}, null, 2) + '\n');
 
 console.log(`  ✔ docs/index.html`);
-console.log(`    version  ${version}  (from plugin.json)`);
+console.log(`  ✔ docs/version.json`);
+console.log(`    version  ${version}`);
 console.log(`    updated  ${updated}`);
+console.log(`    announce "${announce}"`);
 console.log(`    changelog ${CHANGELOG.length} release(s)`);

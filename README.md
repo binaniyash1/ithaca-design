@@ -4,7 +4,15 @@ A portable Agent Skill and cross-agent plugin that turns product requirements in
 rendered, and visually audited UI using Gushwork's design rules, component
 selection logic, and quality gates.
 
-**Install page:** https://ithaca-design.vercel.app
+**Install page:** https://ithaca-design.vercel.app · [INSTALL.md](INSTALL.md) · [ONBOARDING.md](ONBOARDING.md)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/binaniyash1/ithaca-design/main/scripts/install.sh | bash
+```
+
+That installs the Claude Code plugin (when `claude` is present), enables
+auto-update, and always installs portable skills for Cursor / Codex. Restart,
+then verify with `design me a settings page`.
 
 Planning documents: [masterplan.md](masterplan.md) (what and why),
 [execution-plan.md](execution-plan.md) (do this, then check this).
@@ -34,12 +42,15 @@ a spec commit, not a Figma component.
 
 ## Install
 
-### Claude Code
+Prefer the one-liner above. Manual Claude Code steps:
 
 ```
 /plugin marketplace add binaniyash1/ithaca-design
 /plugin install ithaca-design@ithaca
 ```
+
+Then enable auto-update for marketplace `ithaca`, and optionally
+`bash scripts/install-skills.sh` for Cursor / Codex paths.
 
 Restart Claude Code afterwards, or the skill will not fire.
 
@@ -70,7 +81,8 @@ in one self-contained Markdown file. Regenerate it with
 
 ## Current vertical slice
 
-Version 0.6 accepts a PRD, runs a bounded high-value discovery gate, implements the UI in the target
+Version 0.7 adds Gushwork-style install + portable skills + session freshness.
+Version 0.6+ accepts a PRD, runs a bounded high-value discovery gate, implements the UI in the target
 repository, runs a preview, visually audits the result, fixes failures, and
 reports evidence. The first benchmark is `tests/sample-prds/crm-today.md`, a
 dense operational CRM queue with ambient and selected-record context states.
